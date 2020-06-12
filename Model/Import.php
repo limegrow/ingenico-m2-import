@@ -9,6 +9,8 @@ use Magento\Store\Model\ScopeInterface;
 
 class Import
 {
+    const PSPID_SUFFIX = 'M2';
+
     /**
      * @var \Ingenico\Import\Logger\Logger
      */
@@ -161,12 +163,12 @@ class Import
                     $this->logger->info('pspid has been imported', [$value]);
                     $this->writeConfig(
                         'ingenico_connection/test/pspid',
-                        $value,
+                        $value . self::PSPID_SUFFIX,
                         'default'
                     );
                     $this->writeConfig(
                         'ingenico_connection/live/pspid',
-                        $value,
+                        $value . self::PSPID_SUFFIX,
                         'default'
                     );
                     break;
